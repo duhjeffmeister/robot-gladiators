@@ -1,20 +1,50 @@
-// This creates a function named "fight"
-
-function fight() {
-    window.alert("The fight has begun!");
-}
-
-// Robot Name
 var playerName = window.prompt("What is your robot's name?");
+var playerHealth = 100;
+var playerAttack = 10;
 
-// What is this?
-console.log(playerName);
-// This will do math and log20
-console.log(10+10);
-//What is this?
-console.log("Our robot's name is " + playerName);
+//You can also log multiple values at once like this
+console.log(playerName, playerAttack, playerHealth);
 
-var name = "Your Name";
-console.log(name)
+var enemyName = "Roborto";
+var enemyHealth = 50;
+var enemyAttack = 12;
 
-// fight();
+var fight = function() {
+    
+    // Alert players that they are starting the round
+    window.alert("Welcome to Robot Gladiators!");
+
+    //Subtract the value of 'playerAttack' from the value of 'enemyHealth' and use that result to update the value in the 'enemyHealth' variable
+    enemyHealth = enemyHealth - playerAttack;
+   
+    //Log a resulting message to the console so we know that it worked.
+    console.log(
+        playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining."
+    )
+
+    //Check Enemy's Health
+    if (enemyHealth <- 0) {
+        window.alert(enemyName+ " has died!");
+    }
+    else {
+        window.alert(enemyName + " still has " + enemyHealth + " health left.")
+    }
+    
+    //Subtract the value of 'enemyAttack' fromt eh value of 'playerHealth' and use that result to update the value in the 'playerHealth' variable.
+        playerHealth = playerHealth - enemyAttack;
+    
+        //Log a resulting message to the console so we know that it worked.
+    console.log(
+        enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining."
+    )
+
+    //Check Player's Health
+    if (playerHealth <= 0) {
+        window.alert(playerName + " has died!")
+    }
+    else {
+        window.alert(playerName + " still has " + playerHealth + " health left.")
+    }
+};
+
+fight();
