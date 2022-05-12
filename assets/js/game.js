@@ -37,47 +37,39 @@ var fight = function(enemyName) {
                 console.log("playerMoney", playerMoney);
                 break;
             }
-
-            //If no (false), ask question again by running fight() again.
-            else {
-                fight();
-            }
         }
         
-        if (promptFight === "fight" || promptFight === "FIGHT") {
+        //Remove enemy's health by subtracting the amount set in teh playerAttack variable
+        enemyHealth = enemyHealth - playerAttack;
+        console.log(
+            playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining."
+        )
+        if (enemyHealth <= 0) {
+            window.alert(enemyName + " has died!");
+            //Award player money for winning
+            playerMoney = playerMoney + 20;
+            console.log("playerMoney", playerMoney)
+            //Leave while() loop since enemy is dead
+            break;
+        }
+        else {
+            window.alert(enemyName + " still has " + enemyHealth + " health left.")
+        }
             
-            //Remove enemy's health by subtracting the amount set in teh playerAttack variable
-            enemyHealth = enemyHealth - playerAttack;
+        //Remove player health when attacked
+            playerHealth = playerHealth - enemyAttack;
             console.log(
-                playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining."
+                enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining."
             )
-            if (enemyHealth <= 0) {
-                window.alert(enemyName + " has died!");
-                //Award player money for winning
-                playerMoney = playerMoney + 20;
-                console.log("playerMoney", playerMoney)
-                //Leave while() loop since enemy is dead
+
+            //Check Player's Health
+            if (playerHealth <= 0) {
+                window.alert(playerName + " has died!")
                 break;
             }
             else {
-                window.alert(enemyName + " still has " + enemyHealth + " health left.")
+                window.alert(playerName + " still has " + playerHealth + " health left.")
             }
-            
-            //Remove player health when attacked
-                playerHealth = playerHealth - enemyAttack;
-                console.log(
-                    enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining."
-                )
-
-                //Check Player's Health
-                if (playerHealth <= 0) {
-                    window.alert(playerName + " has died!")
-                    break;
-                }
-                else {
-                    window.alert(playerName + " still has " + playerHealth + " health left.")
-                }
-        }
     }//End of while loop
 };//End of fight function  
 
